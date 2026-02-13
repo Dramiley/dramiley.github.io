@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDEZONE — IRL Zone Hide &amp; Seek</title>
+    <meta name="description"
+        content="HIDEZONE — Tactical IRL hide and seek. GPS-powered multiplayer game. Outsmart. Outrun. Outlast.">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icon.png">
+
+    <style>
+        /* ── RESET ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ── STEALTH PALETTE ── */
+        :root {
+            --void: #000000;
+            --surface: #0A0A0A;
+            --surface-elevated: #141414;
+            --border: #1F1F1F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #6B6B6B;
+            --text-muted: #3D3D3D;
+            --accent: #00FF88;
+            --accent-dim: rgba(0, 255, 136, 0.08);
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --red: #FF3B3B;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        /* ── BODY ── */
+        body {
+            background: var(--void);
+            color: var(--text-primary);
+            font-family: var(--sans);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ── ANIMATED GRID BG ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            animation: gridDrift 30s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gridDrift {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(60px, 60px);
+            }
+        }
+
+        /* ── SCAN LINE ── */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.4;
+            animation: scanLine 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes scanLine {
+            0% {
+                top: -2px;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        /* ── MAIN CARD ── */
+        .landing {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 48px 40px;
+            max-width: 480px;
+            width: 90vw;
+        }
+
+        /* ── CORNER BRACKETS ── */
+        .landing::before,
+        .landing::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-color: var(--accent);
+            border-style: solid;
+            opacity: 0.4;
+        }
+
+        .landing::before {
+            top: 0;
+            left: 0;
+            border-width: 2px 0 0 2px;
+        }
+
+        .landing::after {
+            bottom: 0;
+            right: 0;
+            border-width: 0 2px 2px 0;
+        }
+
+        /* ── SIGNAL LABEL ── */
+        .signal {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .signal .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s ease-in-out infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 4px var(--accent);
+            }
+
+            50% {
+                opacity: 0.3;
+                box-shadow: 0 0 0 var(--accent);
+            }
+        }
+
+        /* ── APP ICON ── */
+        .icon-container {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 36px;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border);
+            box-shadow:
+                0 0 40px var(--accent-glow),
+                0 0 80px rgba(0, 255, 136, 0.05);
+            animation: iconFloat 6s ease-in-out infinite;
+        }
+
+        .icon-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes iconFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* ── TITLE ── */
+        .title {
+            font-family: var(--mono);
+            font-size: 42px;
+            font-weight: 600;
+            letter-spacing: 12px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            text-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        /* ── TAGLINE ── */
+        .tagline {
+            font-family: var(--mono);
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .sub-tagline {
+            font-family: var(--sans);
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 0 auto 48px;
+            opacity: 0.5;
+        }
+
+        /* ── PLAY STORE BUTTON ── */
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 32px;
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: var(--sans);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .store-btn:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .store-btn svg {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .store-btn .store-text {
+            text-align: left;
+        }
+
+        .store-btn .store-label {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .store-btn .store-name {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            z-index: 10;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 520px) {
+            .landing {
+                padding: 36px 24px;
+            }
+
+            .title {
+                font-size: 32px;
+                letter-spacing: 8px;
+            }
+
+            .tagline {
+                font-size: 11px;
+                letter-spacing: 3px;
+            }
+
+            .icon-container {
+                width: 110px;
+                height: 110px;
+                border-radius: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="landing">
+        <!-- Signal Indicator -->
+        <div class="signal">
+            <span class="dot"></span>Signal Active
+        </div>
+
+        <!-- App Icon -->
+        <div class="icon-container">
+            <img src="icon.png" alt="HideZone App Icon" width="140" height="140">
+        </div>
+
+        <!-- Title -->
+        <h1 class="title">HIDEZONE</h1>
+
+        <!-- Tagline -->
+        <p class="tagline">IRL Zone Hide &amp; Seek</p>
+        <p class="sub-tagline">Outsmart. Outrun. Outlast.</p>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Google Play Button -->
+        <a href="https://play.google.com/store/apps/details?id=com.hidezone.hidezone" class="store-btn" target="_blank"
+            rel="noopener noreferrer">
+            <!-- Google Play Triangle Icon -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z"
+                    fill="#00FF88" />
+                <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.253-2.429a1 1 0 000-1.738l-4.253-2.361z"
+                    fill="#FFFFFF" fill-opacity="0.6" />
+                <path d="M3.609 1.814L13.792 12l3.764-3.764L5.863.682a1.003 1.003 0 00-2.254 1.132z" fill="#00FF88"
+                    fill-opacity="0.7" />
+                <path d="M13.792 12L3.609 22.186A1 1 0 005.863 23.318l11.693-7.318L13.792 12z" fill="#00FF88"
+                    fill-opacity="0.4" />
+            </svg>
+            <div class="store-text">
+                <span class="store-label">Get it on</span>
+                <span class="store-name">Google Play</span>
+            </div>
+        </a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2025 DRAMILEY &mdash; ALL RIGHTS RESERVED
+    </footer>
+</body>
+
+</html>

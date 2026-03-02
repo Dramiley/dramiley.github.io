@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Support - Hidezone</title>
+    <style>
+        :root {
+            --bg-color: #0d0f1a;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a5b5;
+            --accent: #00ff88;
+            --accent-glow: rgba(0, 255, 136, 0.2);
+            --card-bg: rgba(25, 28, 45, 0.7);
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px var(--accent-glow);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        h1 {
+            color: var(--accent);
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        h2 {
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        .contact-card {
+            background-color: rgba(0, 255, 136, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .contact-method {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-label {
+            color: var(--text-secondary);
+            font-weight: 600;
+            min-width: 100px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(160, 165, 181, 0.2);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Support & Contact</h1>
+
+        <h2>Get in Touch</h2>
+        <p>If you have any questions, bug reports, feature requests, or need help with Hidezone, please reach out
+            directly! We are constantly working on improving the game and highly value player feedback.</p>
+
+        <div class="contact-card">
+            <div class="contact-method">
+                <span class="contact-label">Email:</span>
+                <a href="mailto:dramileydev@gmail.com">dramileydev@gmail.com</a>
+            </div>
+            <div class="contact-method">
+                <span class="contact-label">Developer:</span>
+                <span>dramiley</span>
+            </div>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <p><strong>I purchased the PRO Version, but it's not active?</strong><br>
+            Please ensure you are logged into the same Google Play or Apple App Store account used for the purchase. The
+            app should automatically restore your purchase. If not, try restarting the app.</p>
+
+        <p><strong>My location is jumping around or inaccurate?</strong><br>
+            Hidezone relies on your phone's GPS. For the best experience, play outdoors in open areas, away from tall
+            buildings or dense tree cover. Ensure your phone's location settings are set to "High Accuracy".</p>
+
+        <p><strong>Players are disconnecting inside a lobby?</strong><br>
+            Ensure all players have a stable cellular connection. If you lock your phone or put the app in the
+            background for too long, the OS might suspend the connection. We recommend keeping the app open during the
+            lobby phase.</p>
+
+        <div class="footer">
+            &copy; 2026 Hidezone. All rights reserved. <br>
+            <a href="index.html">Back to Home</a> | <a href="privacy.html">Privacy Policy</a>
+        </div>
+    </div>
+</body>
+
+</html>

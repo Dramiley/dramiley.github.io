@@ -4,161 +4,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Use - Hidezone</title>
+    <title>Terms & Legal — HideZone</title>
     <style>
         :root {
-            --bg-color: #0d0f1a;
-            --text-primary: #f0f0f0;
-            --text-secondary: #a0a5b5;
-            --accent: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.2);
-            --card-bg: rgba(25, 28, 45, 0.7);
-            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --void: #000000;
+            --surface: #0A0A0A;
+            --surface-elevated: #141414;
+            --border: #1F1F1F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #6B6B6B;
+            --text-muted: #3D3D3D;
+            --accent: #00FF88;
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --font-family: 'Inter', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
         }
 
-        body {
-            font-family: var(--font-family);
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 40px;
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px var(--accent-glow);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        h1 {
-            color: var(--accent);
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-
-        .last-updated {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 40px;
-        }
-
-        h2 {
+        body {
+            background: var(--void);
             color: var(--text-primary);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 8px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            font-family: var(--font-family);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        p,
-        li {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
+        /* ── ANIMATED GRID BG ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.2;
+            pointer-events: none;
         }
 
-        ul {
-            margin-bottom: 20px;
+        /* ── SCAN LINE ── */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.3;
+            animation: scanLine 6s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 100;
         }
 
-        li {
+        @keyframes scanLine {
+            0% { top: -2px; }
+            100% { top: 100%; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            width: 100%;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            text-transform: uppercase;
             margin-bottom: 12px;
         }
 
-        strong {
-            color: var(--text-primary);
+        h1 {
+            font-family: var(--mono);
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            text-shadow: 0 0 20px var(--accent-glow);
         }
 
-        .warning-box {
-            background: rgba(255, 68, 68, 0.1);
-            border: 1px solid rgba(255, 68, 68, 0.4);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .warning-box strong {
-            color: #ff4444;
+        .selection-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
         }
 
-        a {
-            color: var(--accent);
+        .legal-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 32px;
             text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        a:hover {
-            text-decoration: underline;
+        .legal-card:nth-child(1) { animation: fadeInUp 0.8s ease 0.2s forwards; }
+        .legal-card:nth-child(2) { animation: fadeInUp 0.8s ease 0.4s forwards; }
+
+        .legal-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 40px var(--accent-glow);
+            transform: translateY(-8px);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .card-title {
+            font-family: var(--mono);
+            font-size: 18px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(160, 165, 181, 0.2);
+            margin-top: 80px;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .footer a {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .selection-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 24px; }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Terms of Use</h1>
-        <div class="last-updated">Last updated: April 06, 2026</div>
+        <header class="header">
+            <p class="label">// Encryption Protocol</p>
+            <h1>Select Your Platform</h1>
+            <p class="subtitle">To continue, please select the platform you are using to view the applicable Terms of Use.</p>
+        </header>
 
-        <div class="warning-box">
-            <strong>IMPORTANT SAFETY NOTICE:</strong> Hidezone is a real-life game that requires physical movement. Always stay aware of your surroundings. Do not play near traffic, dangerous terrain, or restricted areas. <strong>Never trespass on private property.</strong>
+        <div class="selection-grid">
+            <!-- iOS -->
+            <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" class="legal-card" target="_blank">
+                <span class="card-icon">🍎</span>
+                <h2 class="card-title">iOS Users</h2>
+                <p class="card-desc">The standard Apple Licensed Application End User License Agreement (EULA) applies to all iOS installations.</p>
+            </a>
+
+            <!-- Android -->
+            <a href="terms_android.html" class="legal-card">
+                <span class="card-icon">🤖</span>
+                <h2 class="card-title">Android Users</h2>
+                <p class="card-desc">Our Custom Terms of Use apply to all Android installations and direct APK downloads.</p>
+            </a>
         </div>
 
-        <h2>1. Acceptance of Terms</h2>
-        <p>By downloading, installing, or using the "Hidezone - IRL Hide and Seek" mobile application, you agree to be bound by these Terms of Use. If you do not agree to these terms, you must not use the application.</p>
-
-        <h2>2. Proper Use and Safety</h2>
-        <p>You are solely responsible for your own safety and conduct while playing Hidezone. You agree that:</p>
-        <ul>
-            <li>You will comply with all local laws and regulations.</li>
-            <li>You will respect the rights and property of others.</li>
-            <li>You will not use the app to engage in any illegal, dangerous, or harassing behavior.</li>
-            <li>You play at your own risk. The developer is not liable for any physical injuries, property damage, or other incidents resulting from your use of the application.</li>
-        </ul>
-
-        <h2>3. In-App Purchases (Pro Features)</h2>
-        <p>Hidezone offers a "Pro" upgrade that unlocks additional features (e.g., custom game modes, host settings). </p>
-        <ul>
-            <li><strong>Payments:</strong> All transactions are processed via the Apple App Store or Google Play Store.</li>
-            <li><strong>Refunds:</strong> Refund requests are subject to the policies of the respective app store provider (Apple/Google).</li>
-            <li><strong>Persistence:</strong> The "Pro" upgrade is typically tied to your App Store or Play Store account.</li>
-        </ul>
-
-        <h2>4. User Conduct and Chat</h2>
-        <p>The application includes features that allow communication between players. You agree not to send messages that are:</p>
-        <ul>
-            <li>Hate speech, threatening, or discriminatory.</li>
-            <li>Sexually explicit or otherwise offensive.</li>
-            <li>Used for spamming or commercial solicitation.</li>
-        </ul>
-        <p>We reserve the right to restrict access to the application for users who violate these conduct rules.</p>
-
-        <h2>5. Intellectual Property</h2>
-        <p>The application, its design, logos, and software are the intellectual property of the developer. You are granted a limited, non-exclusive, non-transferable license to use the app for personal, non-commercial entertainment purposes.</p>
-
-        <h2>6. Limitation of Liability</h2>
-        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE DEVELOPER SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OR INABILITY TO USE THE APPLICATION, INCLUDING BUT NOT LIMITED TO PHYSICAL INJURY OR PROPERTY DAMAGE INCURRED DURING REAL-LIFE GAMEPLAY.</p>
-
-        <h2>7. Modifications to Terms</h2>
-        <p>We reserve the right to modify these terms at any time. Your continued use of the application following any changes constitutes acceptance of the new terms.</p>
-
-        <div class="footer">
-            &copy; 2026 Hidezone. All rights reserved. <br>
-            <a href="index.html">Back to Home</a> | <a href="support.html">Support</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a>
-        </div>
+        <footer class="footer">
+            <a href="index.html">RETURN TO BASE</a>
+            <span>|</span>
+            <a href="privacy.html">PRIVACY POLICY</a>
+            <span>|</span>
+            <a href="support.html">SUPPORT</a>
+        </footer>
     </div>
 </body>
 

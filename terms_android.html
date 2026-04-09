@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use (Android) — HideZone</title>
+    <style>
+        :root {
+            --void: #000000;
+            --surface: #0A0A0A;
+            --surface-elevated: #141414;
+            --border: #1F1F1F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #6B6B6B;
+            --text-muted: #3D3D3D;
+            --accent: #00FF88;
+            --accent-dim: rgba(0, 255, 136, 0.08);
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --font-family: 'Inter', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--void);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* ── ANIMATED GRID BG ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 60px 40px;
+            background-color: var(--surface);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--mono);
+            color: var(--accent);
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-muted);
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-family: var(--mono);
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-top: 50px;
+            margin-bottom: 24px;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        p,
+        li {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            list-style-type: square;
+        }
+
+        li::marker {
+            color: var(--accent);
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .warning-box {
+            background: rgba(255, 68, 68, 0.05);
+            border: 1px solid rgba(255, 68, 68, 0.2);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 32px 0;
+            font-size: 0.95rem;
+        }
+
+        .warning-box strong {
+            color: #ff4444;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            color: var(--text-muted);
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="label">// Android Security Protocol</p>
+        <h1>Terms of Use</h1>
+        <div class="last-updated">Last updated: April 09, 2026</div>
+
+        <div class="warning-box">
+            <strong>IMPORTANT SAFETY NOTICE:</strong> Hidezone is a real-life game that requires physical movement.
+            Always stay aware of your surroundings. Do not play near traffic, dangerous terrain, or restricted areas.
+            <strong>Never trespass on private property.</strong>
+        </div>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By downloading, installing, or using the "Hidezone - IRL Hide and Seek" mobile application on Android
+            devices, you agree to be bound by these Custom Terms of Use. If you do not agree to these terms, you must
+            not use the application.</p>
+
+        <h2>2. Proper Use and Safety</h2>
+        <p>You are solely responsible for your own safety and conduct while playing Hidezone. You agree that:</p>
+        <ul>
+            <li>You will comply with all local laws and regulations.</li>
+            <li>You will respect the rights and property of others.</li>
+            <li>You will not use the app to engage in any illegal, dangerous, or harassing behavior.</li>
+            <li>You play at your own risk. The developer is not liable for any physical injuries, property damage, or
+                other incidents resulting from your use of the application.</li>
+        </ul>
+
+        <h2>3. In-App Purchases (Pro Features)</h2>
+        <p>Hidezone offers a "Pro" upgrade that unlocks additional features (e.g., custom game modes, host settings).
+        </p>
+        <ul>
+            <li><strong>Payments:</strong> All transactions are processed via the Google Play Store.</li>
+            <li><strong>Refunds:</strong> Refund requests are subject to the policies of Google Play.</li>
+            <li><strong>Persistence:</strong> The "Pro" upgrade is typically tied to your Google Play Store account.
+            </li>
+        </ul>
+
+        <h2>4. User Conduct and Chat</h2>
+        <p>The application includes features that allow communication between players. You agree not to send messages
+            that are:</p>
+        <ul>
+            <li>Hate speech, threatening, or discriminatory.</li>
+            <li>Sexually explicit or otherwise offensive.</li>
+            <li>Used for spamming or commercial solicitation.</li>
+        </ul>
+        <p>We reserve the right to restrict access to the application for users who violate these conduct rules.</p>
+
+        <h2>5. Intellectual Property</h2>
+        <p>The application, its design, logos, and software are the intellectual property of the developer. You are
+            granted a limited, non-exclusive, non-transferable license to use the app for personal, non-commercial
+            entertainment purposes.</p>
+
+        <h2>6. Limitation of Liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE DEVELOPER SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT,
+            INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES RESULTING FROM THE USE OR INABILITY TO USE THE APPLICATION,
+            INCLUDING BUT NOT LIMITED TO PHYSICAL INJURY OR PROPERTY DAMAGE INCURRED DURING REAL-LIFE GAMEPLAY.</p>
+
+        <h2>7. Modifications to Terms</h2>
+        <p>We reserve the right to modify these terms at any time. Your continued use of the application following any
+            changes constitutes acceptance of the new terms.</p>
+
+        <footer class="footer">
+            &copy; 2026 Hidezone. All rights reserved. <br><br>
+            <a href="index.html">HOME</a> |
+            <a href="terms.html">LEGAL OVERVIEW</a> |
+            <a href="support.html">SUPPORT</a> |
+            <a href="privacy.html">PRIVACY</a>
+        </footer>
+    </div>
+</body>
+
+</html>

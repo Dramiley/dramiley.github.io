@@ -5,99 +5,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Hidezone</title>
-    <style>
+        <style>
         :root {
-            --bg-color: #0d0f1a;
-            --text-primary: #f0f0f0;
-            --text-secondary: #a0a5b5;
-            --accent: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.2);
-            --card-bg: rgba(25, 28, 45, 0.7);
-            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --void: #000000;
+            --surface: #0A0A0A;
+            --surface-elevated: #141414;
+            --border: #1F1F1F;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1AA;
+            --text-muted: #71717A;
+            --accent: #00FF88;
+            --accent-dim: rgba(0, 255, 136, 0.08);
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --font-family: 'Inter', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
         }
 
-        body {
-            font-family: var(--font-family);
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        body {
+            background: var(--void);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* ── ANIMATED GRID BG ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
         .container {
+            position: relative;
+            z-index: 10;
             max-width: 800px;
-            margin: 40px auto;
-            padding: 40px;
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px var(--accent-glow);
-            border: 1px solid rgba(0, 255, 136, 0.2);
+            margin: 60px auto;
+            padding: 60px 40px;
+            background-color: var(--surface);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            text-align: center;
         }
 
         h1 {
+            font-family: var(--mono);
             color: var(--accent);
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px var(--accent-glow);
+            margin-bottom: 12px;
+            text-shadow: 0 0 20px var(--accent-glow);
         }
 
         .last-updated {
             text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: var(--mono);
+            font-size: 0.8rem;
             margin-bottom: 40px;
+            letter-spacing: 1px;
         }
 
         h2 {
+            font-family: var(--mono);
             color: var(--text-primary);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 8px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-top: 50px;
+            margin-bottom: 24px;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         p,
         li {
             color: var(--text-secondary);
-            font-size: 1.05rem;
+            font-size: 1rem;
+            margin-bottom: 16px;
         }
 
         ul {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            padding-left: 20px;
         }
 
         li {
             margin-bottom: 12px;
+            list-style-type: square;
+        }
+
+        li::marker {
+            color: var(--accent);
         }
 
         strong {
             color: var(--text-primary);
         }
 
+        .contact-card, .warning-box {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 32px 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-method {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-label {
+            color: var(--text-primary);
+            font-weight: 600;
+            min-width: 100px;
+            font-family: var(--mono);
+        }
+
         a {
             color: var(--accent);
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         a:hover {
+            color: #FFFFFF;
             text-decoration: underline;
         }
 
         .footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(160, 165, 181, 0.2);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            color: var(--text-muted);
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
+        <p class="label">// Data Protocol</p>
         <h1>Privacy Policy</h1>
         <div class="last-updated">Last updated: January 22, 2026</div>
 
@@ -152,15 +252,23 @@
             <li><strong>INTERNET:</strong> Required to communicate with the game servers.</li>
         </ul>
 
-        <h2>6. Contact</h2>
-        <p>If you have any questions about this Privacy Policy or your data, please contact us via the support channels
-            provided in the app.</p>
+        <h2>6. User Rights (GDPR & CCPA)</h2>
+        <p>Since we are based in Germany, we strictly adhere to the General Data Protection Regulation (GDPR) and other applicable privacy laws. You have the right to access, correct, port, and request the deletion of your personal data. <strong>However, because we process data ephemerally and do not store any permanent records after a game session ends, there is practically no personal data retained that could be exported or deleted upon request.</strong> This zero-storage architecture ensures your rights are upheld by design.</p>
 
-        <div class="footer">
-            &copy; 2026 Hidezone. All rights reserved. <br>
-            <a href="index.html">Back to Home</a> | <a href="support.html">Support</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a>
-        </div>
+        <h2>7. Children's Privacy</h2>
+        <p>Our app is designed to be safe for users of all ages, including children under 13 (as per US COPPA) and under 16 (as per EU GDPR-K). We achieve this by adhering to a strict "No Permanent Data Collection" policy. We do not collect, store, or share Personally Identifiable Information (PII) from any user. Location data and chat messages are ephemeral, used exclusively for the duration of a live game, and are instantly deleted when the session ends. Because free-text chat is available during games, we encourage parents to monitor their children's app usage.</p>
+
+        <h2>8. Contact</h2>
+        <p>If you have any questions about this Privacy Policy or how we handle data, please contact us at: <br>
+        <strong>Email:</strong> <a href="mailto:dramileydev@gmail.com">dramileydev@gmail.com</a></p>
+
+                <footer class="footer">
+            &copy; 2026 Hidezone. All rights reserved. <br><br>
+            <a href="index.html">HOME</a> |
+            <a href="terms.html">LEGAL OVERVIEW</a> |
+            <a href="support.html">SUPPORT</a> |
+            <a href="privacy.html">PRIVACY</a>
+        </footer>
     </div>
 </body>
-
 </html>

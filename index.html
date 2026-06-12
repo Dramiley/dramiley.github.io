@@ -19,6 +19,45 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="icon.png">
 
+    <!-- Canonical & social cards -->
+    <link rel="canonical" href="https://dramiley.dev/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="HIDEZONE">
+    <meta property="og:title" content="HIDEZONE - IRL Zone Hide &amp; Seek">
+    <meta property="og:description"
+        content="GPS-powered real-world hide and seek with shrinking zones, tactical items and six game modes. Rated 4.8 on Google Play and the App Store.">
+    <meta property="og:url" content="https://dramiley.dev/">
+    <meta property="og:image" content="https://dramiley.dev/icon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="HIDEZONE - IRL Zone Hide &amp; Seek">
+    <meta name="twitter:description"
+        content="GPS-powered real-world hide and seek with shrinking zones, tactical items and six game modes. Rated 4.8 on Google Play and the App Store.">
+    <meta name="twitter:image" content="https://dramiley.dev/icon.png">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "HideZone",
+        "operatingSystem": "Android, iOS",
+        "applicationCategory": "GameApplication",
+        "url": "https://dramiley.dev/",
+        "image": "https://dramiley.dev/icon.png",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <!-- Content must never be invisible without JavaScript -->
+    <noscript>
+        <style>
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        </style>
+    </noscript>
+
     <style>
         /* ── RESET ── */
         *,
@@ -44,6 +83,10 @@
             --red: #FF3B3B;
             --mono: 'JetBrains Mono', monospace;
             --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         /* ── BODY ── */
@@ -185,7 +228,9 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            padding: 48px 40px;
+            /* Extra bottom space keeps the absolutely-positioned scroll hint
+               clear of the trust line on short viewports. */
+            padding: 48px 40px 110px;
         }
 
         /* ── SIGNAL LABEL ── */
@@ -524,9 +569,16 @@
         }
 
         .feature-icon {
-            font-size: 24px;
-            margin-bottom: 14px;
+            width: 26px;
+            height: 26px;
+            margin-bottom: 16px;
             display: block;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.75;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 6px var(--accent-glow));
         }
 
         .feature-title {
@@ -544,6 +596,140 @@
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.65;
+        }
+
+        /* ── TRUST LINE (hero, under store buttons) ── */
+        .trust-line {
+            margin-top: 26px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .trust-line .stars {
+            color: var(--accent);
+            letter-spacing: 3px;
+            margin-right: 10px;
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* ── REVIEWS SECTION ── */
+        .reviews-section {
+            max-width: 820px;
+            width: 100%;
+            margin-top: 96px;
+        }
+
+        .rating-summary {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .rating-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 24px;
+        }
+
+        .rating-value {
+            font-family: var(--mono);
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .rating-meta {
+            text-align: left;
+        }
+
+        .rating-stars {
+            display: block;
+            color: var(--accent);
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .rating-store {
+            display: block;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .review-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: rgba(0, 255, 136, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .review-card.wide {
+            grid-column: 1 / -1;
+        }
+
+        .review-rating {
+            color: var(--accent);
+            font-size: 13px;
+            letter-spacing: 3px;
+        }
+
+        .review-text {
+            font-family: var(--sans);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .review-source {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* ── CLOSING CTA ── */
+        .cta-section {
+            margin-top: 96px;
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .cta-sub {
+            font-family: var(--sans);
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin: 14px 0 32px;
         }
 
         /* ── SCROLL REVEAL ANIMATION ── */
@@ -594,9 +780,36 @@
             padding-bottom: 24px;
         }
 
+        /* ── REDUCED MOTION ── */
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            body::before,
+            body::after,
+            .icon-container,
+            .scroll-hint,
+            .signal .dot,
+            .coming-soon-badge {
+                animation: none;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 640px) {
             .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .review-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -722,6 +935,9 @@
             </a>
         </div>
 
+        <!-- Trust line -->
+        <p class="trust-line"><span class="stars">★★★★★</span>Rated 4.8 on Google Play &amp; App&nbsp;Store</p>
+
         <!-- Scroll hint -->
         <div class="scroll-hint">
             <span>Scroll</span>
@@ -765,52 +981,184 @@
             </div>
 
             <div class="feature-grid">
+                <!-- Shrinking Zone -->
+                <div class="feature-card reveal">
+                    <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="7" />
+                        <circle cx="12" cy="12" r="2.5" />
+                        <line x1="12" y1="2" x2="12" y2="5" />
+                        <line x1="12" y1="19" x2="12" y2="22" />
+                        <line x1="2" y1="12" x2="5" y2="12" />
+                        <line x1="19" y1="12" x2="22" y2="12" />
+                    </svg>
+                    <h3 class="feature-title">The Shrinking Zone</h3>
+                    <p class="feature-desc">The arena tightens stage by stage on a schedule the host sets. Hiding
+                        spots expire, distances close, and no round ever ends in a stalemate.</p>
+                </div>
+
                 <!-- Game Modes -->
                 <div class="feature-card reveal">
-                    <span class="feature-icon">🎯</span>
-                    <h3 class="feature-title">Game Modes</h3>
-                    <p class="feature-desc">Classic Hide&nbsp;&amp;&nbsp;Seek, Zombie Infection where one bite turns survivors into the horde, intense Chase mode, or Sardines where everyone hides together.</p>
+                    <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 12 12 17 22 12" />
+                        <polyline points="2 17 12 22 22 17" />
+                    </svg>
+                    <h3 class="feature-title">Six Game Modes</h3>
+                    <p class="feature-desc">Classic Hide&nbsp;&amp;&nbsp;Seek, Zombie Infection, high-speed Chase,
+                        Sardines, Murder Mystery and Meteor Escape. One map, six very different game nights.</p>
                 </div>
 
-                <!-- Virtual Items -->
+                <!-- Tactical Items -->
                 <div class="feature-card reveal">
-                    <span class="feature-icon">⚡</span>
+                    <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
                     <h3 class="feature-title">Tactical Items</h3>
-                    <p class="feature-desc">Use Scanners to reveal enemies, Proximity Mines to set traps, Ghost Mode
-                        to vanish, or Zone Mover to flush out campers.</p>
+                    <p class="feature-desc">Reveal enemies with the Scanner, guard your trail with Proximity Alarms,
+                        vanish with Ghost Mode, or drag the zone across the map to flush out campers.</p>
                 </div>
 
-                <!-- GPS Tracking -->
+                <!-- Real-Time GPS -->
                 <div class="feature-card reveal">
-                    <span class="feature-icon">📡</span>
+                    <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                    </svg>
                     <h3 class="feature-title">Real-Time GPS</h3>
-                    <p class="feature-desc">Precise live tracking powers high-stakes chases. Your real-world movement
-                        is the controller - no buttons, just instinct.</p>
+                    <p class="feature-desc">Live positions, zone checks and tag range all run on real GPS. Your
+                        movement is the controller. No buttons, just instinct.</p>
                 </div>
 
-                <!-- Multiplayer -->
+                <!-- Lobbies -->
                 <div class="feature-card reveal">
-                    <span class="feature-icon">👥</span>
-                    <h3 class="feature-title">Instant Multiplayer</h3>
-                    <p class="feature-desc">Create a private lobby and invite 2–10+ friends instantly via a
-                        Lobby&nbsp;ID. No sign-ups, no hassle.</p>
+                    <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    <h3 class="feature-title">Instant Private Lobbies</h3>
+                    <p class="feature-desc">Share a short Zone&nbsp;ID and your crew is in. From three friends to 20+
+                        players, with no accounts and no sign-ups.</p>
                 </div>
 
                 <!-- Privacy -->
                 <div class="feature-card reveal">
-                    <span class="feature-icon">🔒</span>
+                    <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
                     <h3 class="feature-title">Privacy First</h3>
-                    <p class="feature-desc">No accounts required. Your movement data is wiped the moment the match
+                    <p class="feature-desc">No accounts required, and movement data is wiped the moment the match
                         ends. Your location stays yours.</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Fair Play -->
-                <div class="feature-card reveal">
-                    <span class="feature-icon">⚖️</span>
-                    <h3 class="feature-title">Pure Fair Play</h3>
-                    <p class="feature-desc">Zero pay-to-win. Success depends strictly on strategy, stamina, and
-                        teamwork. Skill wins, not wallets.</p>
+        <!-- ═══ REVIEWS ═══ -->
+        <section class="reviews-section">
+            <div class="section-header reveal">
+                <p class="section-label">// Debrief</p>
+                <h2 class="section-title">What Players Say</h2>
+            </div>
+
+            <div class="rating-summary reveal">
+                <div class="rating-chip">
+                    <span class="rating-value">4.8</span>
+                    <span class="rating-meta">
+                        <span class="rating-stars">★★★★★</span>
+                        <span class="rating-store">Google Play</span>
+                    </span>
                 </div>
+                <div class="rating-chip">
+                    <span class="rating-value">4.8</span>
+                    <span class="rating-meta">
+                        <span class="rating-stars">★★★★★</span>
+                        <span class="rating-store">App Store</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="review-grid">
+                <div class="review-card reveal">
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                    <p class="review-text">"HideZone turned out to be exactly what I was looking for. The GPS
+                        tracker-based gameplay is really fun for playing with friends in real life. The app feels very
+                        underrated for how much it offers and how well it's executed. It's one of the most unique
+                        multiplayer apps I've come across."</p>
+                    <p class="review-source">Google Play review</p>
+                </div>
+
+                <div class="review-card reveal">
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                    <p class="review-text">"Absolutely phenomenal app! I had been searching for a good
+                        Hide&nbsp;&amp;&nbsp;Seek game for a long time and finally found yours. Thank you very
+                        much."</p>
+                    <p class="review-source">App Store review</p>
+                </div>
+
+                <div class="review-card wide reveal">
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                    <p class="review-text">"I find that 14-18 year olds can be a highly critical bunch, but they really
+                        enjoyed the premise of the games and would have played much longer if we'd had more time.
+                        Thanks for taking the time to create the app that we didn't realise we'd been waiting for!"</p>
+                    <p class="review-source">Explorer Scout leader, after a 15-player session · via email</p>
+                </div>
+
+                <div class="review-card reveal">
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                    <p class="review-text">"Genuinely one of the best games I've ever had and played with my friends.
+                        I played with a group of around 20 people and it was some of the most fun I've had in a while.
+                        Even playing with a group of three is extremely fun. The bigger the group, the more fun."</p>
+                    <p class="review-source">Google Play review</p>
+                </div>
+
+                <div class="review-card reveal">
+                    <span class="review-rating" aria-label="5 out of 5 stars">★★★★★</span>
+                    <p class="review-text">"Nice app, fun to play with a big group. The only reason I give 3 stars is
+                        because the scroll function in the hiding list is not present. Update: Bug got fixed within 2
+                        days."</p>
+                    <p class="review-source">App Store review · revised to 5 stars</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ CLOSING CTA ═══ -->
+        <section class="cta-section reveal">
+            <div class="section-header" style="margin-bottom: 0;">
+                <p class="section-label">// Ready When You Are</p>
+                <h2 class="section-title">Gather Your Crew</h2>
+            </div>
+            <p class="cta-sub">Free to play on Android and iOS. One phone per player and a park, campus or
+                neighborhood is all you need.</p>
+            <div class="store-buttons">
+                <a href="https://play.google.com/store/apps/details?id=com.hidezone.hidezone" class="store-btn"
+                    target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z"
+                            fill="#00FF88" />
+                        <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.253-2.429a1 1 0 000-1.738l-4.253-2.361z"
+                            fill="#FFFFFF" fill-opacity="0.6" />
+                        <path d="M3.609 1.814L13.792 12l3.764-3.764L5.863.682a1.003 1.003 0 00-2.254 1.132z"
+                            fill="#00FF88" fill-opacity="0.7" />
+                        <path d="M13.792 12L3.609 22.186A1 1 0 005.863 23.318l11.693-7.318L13.792 12z" fill="#00FF88"
+                            fill-opacity="0.4" />
+                    </svg>
+                    <div class="store-text">
+                        <span class="store-label">Get it on</span>
+                        <span class="store-name">Google Play</span>
+                    </div>
+                </a>
+                <a href="https://apps.apple.com/us/app/hidezone-irl-gps-hide-seek/id6759913726" class="store-btn"
+                    target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.82 11.78 5.71 12.57 5.71C13.36 5.71 14.85 4.63 16.4 4.8C17.04 4.83 18.84 5.07 19.97 6.78C19.87 6.84 17.64 8.14 17.67 10.87C17.7 14.14 20.5 15.21 20.54 15.22C20.51 15.31 20.06 16.87 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"
+                            fill="#FFFFFF" />
+                    </svg>
+                    <div class="store-text">
+                        <span class="store-label">Download on</span>
+                        <span class="store-name">App Store</span>
+                    </div>
+                </a>
             </div>
         </section>
 

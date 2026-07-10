@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Wird weitergeleitet...</title>
+    <script>
+        window.onload = function() {
+            // Ersetze diese Platzhalter-Links mit deinen echten Store-Links!
+            var iosLink = "https://apps.apple.com/app/id6759913726";
+            var androidLink = "https://play.google.com/store/apps/details?id=com.hidezone.hidezone";
+            var fallbackLink = "https://dramiley.dev"; // Für PC-Nutzer
+
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Erkennung von iOS (iPhone, iPad, iPod)
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = iosLink;
+            }
+            // Erkennung von Android
+            else if (/android/i.test(userAgent)) {
+                window.location.href = androidLink;
+            }
+            // Fallback für Desktop-PCs oder andere Geräte
+            else {
+                window.location.href = fallbackLink;
+            }
+        };
+    </script>
+</head>
+<body style="background-color: #121212; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <!-- Ein cleaner, dunkler Ladebildschirm, falls die Weiterleitung eine Millisekunde braucht -->
+    <p style="font-family: sans-serif; color: #ffffff; font-size: 1.1rem; text-align: center;">
+        Du wirst zum App Store weitergeleitet...
+    </p>
+</body>
+</html>

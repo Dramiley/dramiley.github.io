@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIDEZONE - Verbinde zum Hauptquartier...</title>
+    <title>HIDEZONE - Connecting...</title>
     <meta name="theme-color" content="#000000">
 
-    <!-- Fonts aus deiner originalen index.html -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -130,19 +129,27 @@
 
     <script>
         window.onload = function() {
-            // Hier deine echten Store-Links einfügen!
+            // Deine echten Store- & Website-Links
             var iosLink = "https://apps.apple.com/app/id6759913726";
             var androidLink = "https://play.google.com/store/apps/details?id=com.hidezone.hidezone";
-            var fallbackLink = "https://dramiley.dev"; // Für PC-User
+            var fallbackLink = "https://dramiley.dev";
 
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var hudTextElement = document.getElementById("hud-status");
 
-            // Blitzschnelle Weichen-Weiterleitung
+            // iOS Erkennung
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                hudTextElement.innerText = "Redirecting to App Store...";
                 window.location.href = iosLink;
-            } else if (/android/i.test(userAgent)) {
+            } 
+            // Android Erkennung
+            else if (/android/i.test(userAgent)) {
+                hudTextElement.innerText = "Redirecting to Play Store...";
                 window.location.href = androidLink;
-            } else {
+            } 
+            // Desktop / PC Fallback
+            else {
+                hudTextElement.innerText = "Redirecting to Homepage...";
                 window.location.href = fallbackLink;
             }
         };
@@ -150,14 +157,13 @@
 </head>
 <body>
 
-    <!-- HUD Deko für den perfekten In-Game-Look beim Laden -->
     <div class="hud-corners"></div>
 
     <div class="loading-hud">
         <div class="signal">
-            <span class="dot"></span>Verbindung aufbauen
+            <span class="dot"></span>System ready
         </div>
-        <p class="hud-text">Lade taktische Daten...</p>
+        <p class="hud-text" id="hud-status">Initializing...</p>
     </div>
 
 </body>

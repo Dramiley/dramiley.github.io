@@ -2,35 +2,163 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Wird weitergeleitet...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDEZONE - Verbinde zum Hauptquartier...</title>
+    <meta name="theme-color" content="#000000">
+
+    <!-- Fonts aus deiner originalen index.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── ORIGINAL STEALTH PALETTE ── */
+        :root {
+            --void: #000000;
+            --border: #1F1F1F;
+            --accent: #00FF88;
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--void);
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* ── ORIGINAL ANIMATED GRID BG ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            animation: gridDrift 30s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gridDrift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        /* ── ORIGINAL SCAN LINE ── */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.4;
+            animation: scanLine 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes scanLine {
+            0% { top: -2px; }
+            100% { top: 100%; }
+        }
+
+        /* ── HUD CORNER BRACKETS ── */
+        .hud-corners::before, .hud-corners::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-color: var(--accent);
+            border-style: solid;
+            opacity: 0.4;
+        }
+        .hud-corners::before { top: 24px; left: 24px; border-width: 2px 0 0 2px; }
+        .hud-corners::after { bottom: 24px; right: 24px; border-width: 0 2px 2px 0; }
+
+        /* ── LOADING HUD TEXT ── */
+        .loading-hud {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .signal {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #71717A;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .signal .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s ease-in-out infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--accent); }
+            50% { opacity: 0.3; box-shadow: 0 0 0 var(--accent); }
+        }
+
+        .hud-text {
+            font-family: var(--mono);
+            color: #FFFFFF;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+    </style>
+
     <script>
         window.onload = function() {
-            // Ersetze diese Platzhalter-Links mit deinen echten Store-Links!
+            // Hier deine echten Store-Links einfügen!
             var iosLink = "https://apps.apple.com/app/id6759913726";
             var androidLink = "https://play.google.com/store/apps/details?id=com.hidezone.hidezone";
-            var fallbackLink = "https://dramiley.dev"; // Für PC-Nutzer
+            var fallbackLink = "https://dramiley.dev"; // Für PC-User
 
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // Erkennung von iOS (iPhone, iPad, iPod)
+            // Blitzschnelle Weichen-Weiterleitung
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = iosLink;
-            }
-            // Erkennung von Android
-            else if (/android/i.test(userAgent)) {
+            } else if (/android/i.test(userAgent)) {
                 window.location.href = androidLink;
-            }
-            // Fallback für Desktop-PCs oder andere Geräte
-            else {
+            } else {
                 window.location.href = fallbackLink;
             }
         };
     </script>
 </head>
-<body style="background-color: #121212; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
-    <!-- Ein cleaner, dunkler Ladebildschirm, falls die Weiterleitung eine Millisekunde braucht -->
-    <p style="font-family: sans-serif; color: #ffffff; font-size: 1.1rem; text-align: center;">
-        Du wirst zum App Store weitergeleitet...
-    </p>
+<body>
+
+    <!-- HUD Deko für den perfekten In-Game-Look beim Laden -->
+    <div class="hud-corners"></div>
+
+    <div class="loading-hud">
+        <div class="signal">
+            <span class="dot"></span>Verbindung aufbauen
+        </div>
+        <p class="hud-text">Lade taktische Daten...</p>
+    </div>
+
 </body>
 </html>

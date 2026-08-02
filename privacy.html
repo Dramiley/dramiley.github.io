@@ -197,9 +197,9 @@
 
 <body>
     <div class="container">
-        <p class="label">// Data Protocol</p>
+        <p class="label">// Privacy Overview</p>
         <h1>Privacy Policy</h1>
-        <div class="last-updated">Last updated: April 27, 2026</div>
+        <div class="last-updated">Last updated: August 02, 2026</div>
 
         <h2>1. General Information</h2>
         <p>This Privacy Policy explains how the developer ("we", "us") collects, uses, and protects user information in
@@ -211,13 +211,10 @@
         <p>To provide the game functionality (Real-Life Hide and Seek), the app requires access to the following data:
         </p>
         <ul>
-            <li><strong>Location Data (GPS):</strong> The app collects your precise location data only while you are in
-                an active game round. This data is transmitted to our game server to display your position to other
-                players (e.g., the "Seeker") within your game lobby.</li>
-            <li><strong>User-Generated Content (Chat):</strong> The app includes a chat feature allowing players to
-                communicate during a game. Messages are transmitted via our servers to other players in the lobby.</li>
-            <li><strong>Device Information:</strong> We may collect non-personal technical data (e.g., device model,
-                operating system version) for error logging and app stability.</li>
+            <li><strong>Location Data (GPS &amp; Background Location):</strong> The app collects your precise location data only while you are in an active game round (including when the app is in the background or screen is locked) to continuously sync positions with your lobby players, check shrinking zone bounds, and process tag distance.</li>
+            <li><strong>User-Generated Content (Chat):</strong> The app includes a chat feature allowing players to communicate during a game. Messages are transmitted via our servers to other players in the lobby.</li>
+            <li><strong>Anonymous Account Identifier:</strong> We use Firebase Anonymous Authentication to assign a transient session token to your client so you can host or join lobbies without requiring personal sign-up details (email/password/social logins).</li>
+            <li><strong>Technical Diagnostics &amp; Crash Analytics:</strong> Non-personal technical metrics (device model, OS version, performance logs, and stack traces) are collected via Firebase Analytics and Firebase Crashlytics to diagnose crashes and maintain service stability.</li>
         </ul>
 
         <h2>3. Data Retention and Deletion (Ephemeral Processing)</h2>
@@ -233,17 +230,16 @@
         </ul>
 
         <h2>4. Third-Party Services</h2>
-        <p>We use trusted third-party services to support the app's infrastructure and monetization. These providers may
-            collect and process data (such as Advertising IDs) according to their own privacy policies.</p>
+        <p>We use trusted third-party services to support the app's infrastructure, real-time sync, and monetization. These providers process data according to their respective privacy policies:</p>
         <ul>
-            <li><strong>Google AdMob (Advertising):</strong> We use Google AdMob to display advertisements. AdMob may
-                use your device's Advertising ID to show personalized or non-personalized ads. <br>
+            <li><strong>Google Firebase (Authentication, Realtime Database, Analytics, Crashlytics):</strong> We use Firebase for anonymous lobby authorization, ephemeral game sync, stability monitoring, and performance telemetry. <br>
+                <a href="https://policies.google.com/privacy" target="_blank">Google / Firebase Privacy Policy</a>
+            </li>
+            <li><strong>Google AdMob (Advertising):</strong> We use Google AdMob to display advertisements in non-Pro lobbies. AdMob may use your device's Advertising ID to show personalized or non-personalized ads. <br>
                 <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
             </li>
-            <li><strong>Google Play Billing / Apple StoreKit (In-App Purchases):</strong> Payments for premium features
-                (e.g., "Pro" upgrades) are processed entirely by Google Play or Apple. We do not have access to your
-                credit card information or bank details. We only receive a confirmation of the transaction status.</li>
-            <li><strong>RevenueCat (Purchase Management):</strong> We use RevenueCat to manage and validate our in-app purchases and subscriptions. RevenueCat processes anonymous purchase receipts to verify your subscription status, but does not receive or store any payment details or personal information. <br>
+            <li><strong>Google Play Billing / Apple StoreKit (In-App Purchases):</strong> Payments for premium features (e.g., "Pro" upgrades) are processed entirely by Google Play or Apple. We do not have access to your credit card or payment details.</li>
+            <li><strong>RevenueCat (Purchase &amp; Subscription Management):</strong> We use RevenueCat to validate in-app purchases and subscription entitlements. RevenueCat processes anonymous purchase receipts to verify your subscription status. <br>
                 <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>
             </li>
         </ul>
@@ -251,8 +247,10 @@
         <h2>5. App Permissions</h2>
         <p>The app requests the following permissions for the described purposes:</p>
         <ul>
-            <li><strong>ACCESS_FINE_LOCATION:</strong> Required to track your position during the game.</li>
-            <li><strong>INTERNET:</strong> Required to communicate with the game servers.</li>
+            <li><strong>ACCESS_FINE_LOCATION &amp; ACCESS_BACKGROUND_LOCATION / iOS Location Always:</strong> Required to calculate your distance to zones, track active position during gameplay, and maintain live game balance even when the device is locked or the app is minimized during a match.</li>
+            <li><strong>INTERNET &amp; FOREGROUND_SERVICE:</strong> Required to maintain connection to Firebase servers and run the location service during live matches.</li>
+            <li><strong>POST_NOTIFICATIONS:</strong> Required to alert you when game rounds start, zone shrink countdowns trigger, or ping reveals occur.</li>
+            <li><strong>App Tracking Transparency (iOS NSUserTrackingUsageDescription):</strong> Requested on iOS to allow Google AdMob to serve relevant ads (if consented by the user).</li>
         </ul>
 
         <h2>6. User Rights (GDPR & CCPA)</h2>

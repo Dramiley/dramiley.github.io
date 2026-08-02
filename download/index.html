@@ -6,6 +6,8 @@
     <title>HIDEZONE - Connecting...</title>
     <meta name="theme-color" content="#000000">
 
+    <link rel="icon" type="image/png" href="../icon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -128,31 +130,32 @@
     </style>
 
     <script>
-        window.onload = function() {
-            // Deine echten Store- & Website-Links
+        // iOS / iPadOS detection. iPadOS 13+ reports a Macintosh user agent,
+        // so also check for a touch-capable display.
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Real store & website links
             var iosLink = "https://apps.apple.com/us/app/hidezone-irl-gps-hide-seek/id6759913726";
             var androidLink = "https://play.google.com/store/apps/details?id=com.hidezone.hidezone";
             var fallbackLink = "https://dramiley.dev";
 
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             var hudTextElement = document.getElementById("hud-status");
 
-            // iOS Erkennung
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            if (isIOS()) {
                 hudTextElement.innerText = "Redirecting to App Store...";
                 window.location.href = iosLink;
-            } 
-            // Android Erkennung
-            else if (/android/i.test(userAgent)) {
+            } else if (/android/i.test(navigator.userAgent)) {
                 hudTextElement.innerText = "Redirecting to Play Store...";
                 window.location.href = androidLink;
-            } 
-            // Desktop / PC Fallback
-            else {
+            } else {
                 hudTextElement.innerText = "Redirecting to Homepage...";
                 window.location.href = fallbackLink;
             }
-        };
+        });
     </script>
 </head>
 <body>

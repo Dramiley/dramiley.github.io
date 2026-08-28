@@ -206,69 +206,124 @@
     <div class="container">
         <p class="label">// Privacy Overview</p>
         <h1>Privacy Policy</h1>
-        <div class="last-updated">Last updated: August 02, 2026</div>
+        <div class="last-updated">Last updated: August 28, 2026</div>
 
-        <h2>1. General Information</h2>
-        <p>This Privacy Policy explains how the developer ("we", "us") collects, uses, and protects user information in
-            the mobile application "HideZone - IRL Hide and Seek". We take your privacy seriously. The core principle of
-            our app is <strong>data minimalism</strong>: we do not store your movement profiles or chat history
-            permanently.</p>
+        <h2>1. Controller and Scope</h2>
+        <p>This Privacy Policy explains how Robin Morgenstern, operating as dramiley ("we", "us")
+            processes personal data in "HideZone: GPS Hide &amp; Seek" and on this website. Contact:
+            <a href="mailto:dramileydev@gmail.com">dramileydev@gmail.com</a>.</p>
+        <p>HideZone does not require an email address or social login. However, the app uses anonymous identifiers and
+            processes the data necessary to provide live GPS gameplay, advertising, diagnostics and subscriptions.</p>
 
         <h2>2. Data We Collect and Process</h2>
-        <p>To provide the game functionality (Real-Life Hide and Seek), the app requires access to the following data:
-        </p>
+        <p>Depending on how you use HideZone, we process the following categories:</p>
         <ul>
-            <li><strong>Location Data (GPS &amp; Background Location):</strong> The app collects your precise location data only while you are in an active game round (including when the app is in the background or screen is locked) to continuously sync positions with your lobby players, check shrinking zone bounds, and process tag distance.</li>
-            <li><strong>User-Generated Content (Chat):</strong> The app includes a chat feature allowing players to communicate during a game. Messages are transmitted via our servers to other players in the lobby.</li>
-            <li><strong>Anonymous Account Identifier:</strong> We use Firebase Anonymous Authentication to assign a transient session token to your client so you can host or join lobbies without requiring personal sign-up details (email/password/social logins).</li>
-            <li><strong>Technical Diagnostics &amp; Crash Analytics:</strong> Non-personal technical metrics (device model, OS version, performance logs, and stack traces) are collected via Firebase Analytics and Firebase Crashlytics to diagnose crashes and maintain service stability.</li>
+            <li><strong>Player and lobby data:</strong> Player name, anonymous Firebase user ID, Zone ID, team, role,
+                host status, game settings and match events.</li>
+            <li><strong>Precise location:</strong> GPS coordinates, accuracy and timestamps during an active match,
+                including while the app is in the background or the screen is locked.</li>
+            <li><strong>Chat:</strong> Messages sent to other players in the same private lobby.</li>
+            <li><strong>Device and other identifiers:</strong> Firebase installation and Crashlytics identifiers,
+                advertising ID or IDFA where available, SDK identifiers and consent information.</li>
+            <li><strong>App activity and analytics:</strong> Feature interactions, game mode selections, session events
+                and aggregated usage information.</li>
+            <li><strong>Diagnostics:</strong> Crash logs, stack traces, device model, operating system, app version,
+                performance and network state.</li>
+            <li><strong>Advertising data:</strong> Ad impressions, clicks, consent status, advertising identifiers and
+                approximate location derived from the IP address where permitted.</li>
+            <li><strong>Subscription data:</strong> RevenueCat anonymous App User ID, product, entitlement status,
+                transaction and receipt information. We do not receive full payment card details.</li>
         </ul>
 
-        <h2>3. Data Retention and Deletion (Ephemeral Processing)</h2>
-        <p>We strictly adhere to a policy of <strong>immediate deletion</strong>.</p>
+        <h2>3. Purposes and Legal Bases</h2>
+        <p>We process player names, anonymous IDs, location, chat and game state to provide the game under Article
+            6(1)(b) GDPR. Security and essential diagnostics are processed to provide a reliable service and on the
+            basis of our legitimate interests under Article 6(1)(f) GDPR. Analytics and advertising are based on
+            consent where required. Subscription records are processed to perform the subscription agreement and meet
+            legal obligations.</p>
+        <p>Location access is necessary for live GPS matches. If you deny it, you cannot participate in a live round.
+            Chat is optional unless a particular game interaction requires it.</p>
+
+        <h2>4. Retention and Deletion</h2>
         <ul>
-            <li><strong>Temporary Storage:</strong> Location data, game states, and chat messages are stored on our
-                servers exclusively for the duration of the active game round.</li>
-            <li><strong>Immediate Deletion:</strong> As soon as a game round ends (via time limit or game completion),
-                all game-related data—including chat history and location logs—is automatically and permanently deleted
-                from our servers.</li>
-            <li><strong>No Archiving:</strong> We do not create or store permanent movement profiles or chat logs of our
-                users.</li>
+            <li><strong>Live match data:</strong> Location, chat and game state are deleted when a game is properly
+                ended. Automated cleanup periodically removes abandoned or interrupted lobby records, so deletion may
+                occur later. We do not create permanent movement profiles or chat archives.</li>
+            <li><strong>Anonymous Firebase identifiers:</strong> Authentication and installation identifiers may remain
+                after a game until deleted, reset by the service or removed following a verified request.</li>
+            <li><strong>Firebase Analytics:</strong> User-level event data is retained for no longer than 14 months;
+                aggregated reports may remain longer. The configured Firebase setting may shorten this period.</li>
+            <li><strong>Crashlytics:</strong> Crash and diagnostic data is generally retained for up to 90 days.</li>
+            <li><strong>Subscriptions:</strong> RevenueCat and the app stores retain transaction and entitlement data as
+                necessary for subscription management, restoration, fraud prevention, accounting and legal duties.</li>
         </ul>
 
-        <h2>4. Third-Party Services</h2>
-        <p>We use trusted third-party services to support the app's infrastructure, real-time sync, and monetization. These providers process data according to their respective privacy policies:</p>
+        <h2>5. Sharing and Service Providers</h2>
+        <p>Your player name, role, game actions, chat messages and game-related position may be visible to players in
+            the same private lobby. Only join lobbies with people you trust and do not use your full legal name as a
+            player name.</p>
+        <p>We use the following providers:</p>
         <ul>
-            <li><strong>Google Firebase (Authentication, Realtime Database, Analytics, Crashlytics):</strong> We use Firebase for anonymous lobby authorization, ephemeral game sync, stability monitoring, and performance telemetry. <br>
-                <a href="https://policies.google.com/privacy" target="_blank">Google / Firebase Privacy Policy</a>
+            <li><strong>Google Firebase:</strong> Anonymous Authentication, Realtime Database, Analytics and
+                Crashlytics. <a href="https://policies.google.com/privacy" target="_blank"
+                    rel="noopener noreferrer">Google Privacy Policy</a>
             </li>
-            <li><strong>Google AdMob (Advertising):</strong> We use Google AdMob to display advertisements in non-Pro lobbies. AdMob may use your device's Advertising ID to show personalized or non-personalized ads. <br>
-                <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
+            <li><strong>Google AdMob:</strong> Advertising, measurement and consent management in eligible lobbies.
+                <a href="https://policies.google.com/technologies/ads" target="_blank"
+                    rel="noopener noreferrer">Google advertising information</a>
             </li>
-            <li><strong>Google Play Billing / Apple StoreKit (In-App Purchases):</strong> Payments for premium features (e.g., "Pro" upgrades) are processed entirely by Google Play or Apple. We do not have access to your credit card or payment details.</li>
-            <li><strong>RevenueCat (Purchase &amp; Subscription Management):</strong> We use RevenueCat to validate in-app purchases and subscription entitlements. RevenueCat processes anonymous purchase receipts to verify your subscription status. <br>
-                <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a>
+            <li><strong>RevenueCat:</strong> Subscription validation and entitlement management. <a
+                    href="https://www.revenuecat.com/privacy/" target="_blank"
+                    rel="noopener noreferrer">RevenueCat Privacy Policy</a>
             </li>
+            <li><strong>Google Play and Apple App Store:</strong> Payment processing and subscription management under
+                their own privacy terms.</li>
         </ul>
+        <p>We do not sell personal data. Providers may process data in the United States or other countries. Where the
+            GDPR applies, transfers rely on an adequacy decision, the EU-US Data Privacy Framework where applicable,
+            Standard Contractual Clauses or another lawful safeguard offered by the provider.</p>
 
-        <h2>5. App Permissions</h2>
+        <h2>6. App Permissions and Choices</h2>
         <p>The app requests the following permissions for the described purposes:</p>
         <ul>
             <li><strong>ACCESS_FINE_LOCATION &amp; ACCESS_BACKGROUND_LOCATION / iOS Location Always:</strong> Required to calculate your distance to zones, track active position during gameplay, and maintain live game balance even when the device is locked or the app is minimized during a match.</li>
             <li><strong>INTERNET &amp; FOREGROUND_SERVICE:</strong> Required to maintain connection to Firebase servers and run the location service during live matches.</li>
             <li><strong>POST_NOTIFICATIONS:</strong> Required to alert you when game rounds start, zone shrink countdowns trigger, or ping reveals occur.</li>
-            <li><strong>App Tracking Transparency (iOS NSUserTrackingUsageDescription):</strong> Requested on iOS to allow Google AdMob to serve relevant ads (if consented by the user).</li>
+            <li><strong>App Tracking Transparency:</strong> Requested on iOS for advertising purposes where applicable.
+                Denying tracking does not block core gameplay.</li>
         </ul>
+        <p>You can revoke permissions in your device settings and revisit available advertising privacy choices in the
+            app. Revoking a permission may disable the corresponding feature.</p>
 
-        <h2>6. User Rights (GDPR & CCPA)</h2>
-        <p>Since we are based in Germany, we strictly adhere to the General Data Protection Regulation (GDPR) and other applicable privacy laws. You have the right to access, correct, port, and request the deletion of your personal data. <strong>However, because we process data ephemerally and do not store any permanent records after a game session ends, there is practically no personal data retained that could be exported or deleted upon request.</strong> This zero-storage architecture ensures your rights are upheld by design.</p>
+        <h2>7. Your Privacy Rights</h2>
+        <p>Depending on your location, you may have the right to access, correct, delete, restrict or receive a copy of
+            personal data, object to processing and withdraw consent for future processing. You may also complain to a
+            competent data protection authority.</p>
+        <p>To make a request, email <a href="mailto:dramileydev@gmail.com">dramileydev@gmail.com</a>. Include your
+            platform and any anonymous Firebase or RevenueCat identifier available to you. We may request limited
+            information to verify that a request relates to you. Do not email precise location histories, passwords,
+            full payment card details or unredacted store receipts unless specifically requested.</p>
 
-        <h2>7. Children's Privacy</h2>
-        <p>Our app is designed to be safe for users of all ages, including children under 13 (as per US COPPA) and under 16 (as per EU GDPR-K). We achieve this by adhering to a strict "No Permanent Data Collection" policy. We do not collect, store, or share Personally Identifiable Information (PII) from any user. Location data and chat messages are ephemeral, used exclusively for the duration of a live game, and are instantly deleted when the session ends. Because free-text chat is available during games, we encourage parents to monitor their children's app usage.</p>
+        <h2>8. Users Aged 13-17</h2>
+        <p>HideZone is not intended for children under 13. A user who is at least 13 but has not reached the age at
+            which they can independently agree to these terms or relevant data processing in their country must use
+            HideZone only with permission from a parent or legal guardian. Parents and guardians should review live
+            location sharing, private lobby membership and chat risks and supervise the choice of play area.</p>
+        <p>Do not share a home address, school, phone number, full legal name or other sensitive information in a player
+            name or lobby chat.</p>
 
-        <h2>8. Contact</h2>
-        <p>If you have any questions about this Privacy Policy or how we handle data, please contact us at: <br>
-        <strong>Email:</strong> <a href="mailto:dramileydev@gmail.com">dramileydev@gmail.com</a></p>
+        <h2>9. Website, Security and Changes</h2>
+        <p>This website itself does not use analytics or advertising trackers. The hosting infrastructure necessarily
+            receives technical request data such as IP address, request time and browser information to deliver and
+            protect the site. The main and download pages load fonts from Google Fonts, which causes the browser to
+            connect to Google and transmit technical connection data such as the IP address. Links to app stores and
+            provider policies lead to third-party websites.</p>
+        <p>We use encrypted connections and provider access controls, but no online service can guarantee absolute
+            security. We may update this policy when features, providers or legal requirements change.</p>
+
+        <h2>10. Contact</h2>
+        <p>Robin Morgenstern, operating as dramiley<br>
+            Email: <a href="mailto:dramileydev@gmail.com">dramileydev@gmail.com</a></p>
 
                 <footer class="footer">
             &copy; 2026 HideZone. All rights reserved. <br><br>
